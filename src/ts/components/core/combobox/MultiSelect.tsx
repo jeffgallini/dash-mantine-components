@@ -45,6 +45,8 @@ interface Props
     hiddenInputValuesDivider?: string;
     /** Props passed down to the underlying `ScrollArea` component in the dropdown */
     scrollAreaProps?: ScrollAreaProps;
+    /** Function to customize option rendering in the dropdown */
+    renderOption?: (params: { option: any }) => React.ReactNode;
 }
 
 /** MultiSelect */
@@ -59,6 +61,7 @@ const MultiSelect = ({
         n_blur = 0,
         data = [],
         value = [],
+        renderOption,
         ...others
     }: Props) => {
 
@@ -125,6 +128,7 @@ const MultiSelect = ({
                 onChange={setSelected}
                 value={selected}
                 onSearchChange={handleSearchChange}
+                renderOption={renderOption}
                 {...others}
             />
         </div>
